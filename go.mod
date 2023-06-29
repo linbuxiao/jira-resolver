@@ -5,7 +5,6 @@ go 1.19
 require (
 	github.com/andygrunwald/go-jira v1.16.0
 	github.com/charmbracelet/log v0.2.2
-	github.com/samber/do v1.6.0
 	github.com/samber/lo v1.38.1
 	github.com/spf13/viper v1.16.0
 	github.com/urfave/cli/v2 v2.25.3
