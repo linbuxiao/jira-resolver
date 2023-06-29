@@ -20,13 +20,6 @@ func main() {
 	log.SetPrefix("Jira 🍪 ")
 	log.SetTimeFormat(time.Kitchen)
 	log.Helper()
-	// 初始化 config
-	if err := GetConfig(); err != nil {
-		log.Fatal(err)
-	}
-	token := viper.GetString("jira_token")
-	jiraURL := viper.GetString("jira_host")
-	jiraClient := MustGetJiraClient(token, jiraURL)
 	// 初始化 cli
 	app := &cli.App{
 		Name:      "Jira Resolver",
@@ -34,6 +27,13 @@ func main() {
 		Usage:     "帮助你应对 kevin 的每日 Jira Ticket Resolve 任务",
 		ArgsUsage: "Kevin 的告警转义换行符后输入",
 		Action: func(cCtx *cli.Context) error {
+			// 初始化 config
+			if err := GetConfig(); err != nil {
+				log.Fatal(err)
+			}
+			token := viper.GetString("jira_token")
+			jiraURL := viper.GetString("jira_host")
+			jiraClient := MustGetJiraClient(token, jiraURL)
 			content := cCtx.Args().Get(0)
 			var wg errgroup.Group
 			log.Info("开始获取 issues")
