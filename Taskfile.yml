@@ -1,0 +1,13 @@
+version: '3'
+tasks:
+  lint:
+    cmds:
+      - golangci-lint run
+
+  fmt:
+    cmds:
+      - golangci-lint run --fix
+
+  build:
+    cmds:
+      - go build .
