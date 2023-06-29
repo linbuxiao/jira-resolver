@@ -14,6 +14,8 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
+const __VERSION__ = "0.1.0"
+
 func main() {
 	log.SetPrefix("Jira 🍪 ")
 	log.SetTimeFormat(time.Kitchen)
@@ -28,6 +30,7 @@ func main() {
 	// 初始化 cli
 	app := &cli.App{
 		Name:      "Jira Resolver",
+		Version:   __VERSION__,
 		Usage:     "帮助你应对 kevin 的每日 Jira Ticket Resolve 任务",
 		ArgsUsage: "Kevin 的告警转义换行符后输入",
 		Action: func(cCtx *cli.Context) error {
